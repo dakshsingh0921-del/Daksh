@@ -1,150 +1,229 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sorry Neha 💛</title>
+<title>Happy Anniversary</title>
+
 <style>
-body {
-  margin: 0;
-  font-family: 'Verdana';
-  background: linear-gradient(#ffe6f2, #fff);
-  text-align: center;
-  padding: 20px;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
 }
-.teddy {
-  margin-top: 20px;
-  animation: float 3s infinite ease-in-out;
-  width: 180px;
+
+body{
+  background:#f7d9c4;
+  overflow:hidden;
 }
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+
+.slide{
+  display:none;
+  height:100vh;
+  width:100vw;
+  padding:60px;
+  text-align:center;
 }
-.letter {
-  font-size: 20px;
-  margin-top: 20px;
-  padding: 20px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 0 12px #ffb6d6;
-  display: inline-block;
-  max-width: 350px;
-  animation: fadeIn 2s;
-  line-height: 1.6;
+
+.slide.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+h1{
+  font-size:3em;
+  color:#5a2d0c;
+  margin-bottom:20px;
 }
-.button {
-  margin-top: 15px;
-  padding: 12px 25px;
-  border: none;
-  background: #ff80aa;
-  color: white;
-  border-radius: 25px;
-  font-size: 18px;
-  margin: 7px;
+
+p{
+  font-size:1.3em;
+  max-width:900px;
+  line-height:1.8;
+  color:#3d1f0f;
 }
-.hearts {
-  position: fixed;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
+
+.teddy{
+  font-size:4em;
+  margin:20px;
 }
-.heart {
-  position: absolute;
-  font-size: 24px;
-  animation: rise 4s linear infinite;
+
+button{
+  margin-top:40px;
+  padding:12px 30px;
+  font-size:1.1em;
+  border:none;
+  border-radius:30px;
+  background:#5a2d0c;
+  color:white;
+  cursor:pointer;
 }
-@keyframes rise {
-  0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+
+.signature{
+  margin-top:30px;
+  font-style:italic;
+}
+
+/* 🎈 Balloons */
+.balloon{
+  position:absolute;
+  bottom:-100px;
+  font-size:2.5em;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0);}
+  to{transform:translateY(-120vh);}
+}
+
+/* 🎆 Firecracker */
+.spark{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:red;
+  border-radius:50%;
+  animation:burst 1s ease-out forwards;
+}
+
+@keyframes burst{
+  from{transform:scale(1); opacity:1;}
+  to{transform:scale(4); opacity:0;}
+}
+
+/* 🎉 Text animation */
+.glow{
+  animation:glow 1.5s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px #ff6;}
+  to{text-shadow:0 0 30px #ff0000;}
 }
 </style>
 </head>
+
 <body>
 
-<h1>💛 For Neha, From Daksh 💛</h1>
+<!-- 🎵 Music (plays on first click) -->
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio>
 
-<div id="content">
-  <svg class="teddy" viewBox="0 0 200 200">
-    <g>
-      <circle cx="100" cy="120" r="55" fill="#A56B46"/>
-      <circle cx="65" cy="75" r="32" fill="#A56B46"/>
-      <circle cx="135" cy="75" r="32" fill="#A56B46"/>
-      <circle cx="60" cy="70" r="8" fill="#3B2A20"/>
-      <circle cx="140" cy="70" r="8" fill="#3B2A20"/>
-      <ellipse cx="100" cy="105" rx="15" ry="10" fill="#3B2A20"/>
-      <circle cx="100" cy="145" r="12" fill="#FFD5B2"/>
-    </g>
-  </svg>
-
-  <div class="letter" id="letter">
-    Neha… 💛<br><br>
-    I'm really, really sorry 😔💗<br>
-    I never meant to hurt you…<br>
-    You matter a lot to me, and your feelings matter even more 💕<br><br>
-    Please forgive me… I will always try to be better for you 😭💛
-  </div>
-
-  <div>
-    <button class="button" onclick="forgive()">Forgive Me 💛</button>
-    <button class="button" onclick="stillSad()">Still Sad 😔</button>
-  </div>
+<div class="slide active">
+  <div class="teddy">🧸💖🧸</div>
+  <h1 class="type"></h1>
+  <p class="type">
+    To the most beautiful couple —  
+    Mr. Devender & Mrs. Poonam.  
+    This is a small surprise made with love.
+  </p>
+  <button onclick="nextSlide()">Click Here 💕</button>
 </div>
 
-<div class="hearts" id="heartContainer"></div>
+<div class="slide">
+  <div class="teddy">🐻🌸🐻</div>
+  <h1 class="type">To My Father</h1>
+  <p class="type">
+    Papa, your strength and sacrifices inspire me every day.
+    You taught me how to stand strong and honest in life.
+  </p>
+  <button onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide">
+  <div class="teddy">🧸💕🧸</div>
+  <h1 class="type">To My Mother</h1>
+  <p class="type">
+    Mummy, you are the soul of our home.
+    Your love, care, and warmth make everything beautiful.
+  </p>
+  <button onclick="nextSlide()">Next ➡️</button>
+</div>
+
+<div class="slide">
+  <div class="teddy">🐻🤍🐻</div>
+  <h1 class="type">Together</h1>
+  <p class="type">
+    Your bond teaches me what true love and partnership mean.
+    I am proud to be your child.
+  </p>
+  <button onclick="nextSlide()">Final Surprise 🎉</button>
+</div>
+
+<div class="slide" id="final">
+  <h1 class="glow">🎉 HAPPY ANNIVERSARY 🎉</h1>
+  <p>
+    Mr. Devender & Mrs. Poonam  
+  </p>
+  <div class="signature">— From your son, Daksh ❤️</div>
+</div>
 
 <script>
-function createHeart() {
-  const heart = document.createElement('div');
-  heart.className = 'heart';
-  heart.innerText = '💗';
-  heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = (Math.random()*2 + 3) + 's';
-  document.getElementById('heartContainer').appendChild(heart);
-  setTimeout(() => heart.remove(), 4000);
-}
-setInterval(createHeart, 600);
+let slides=document.querySelectorAll(".slide");
+let index=0;
+let musicStarted=false;
 
-function forgive() {
-  document.getElementById("content").innerHTML = `
-    <svg class="teddy" viewBox="0 0 200 200">
-      <g>
-        <circle cx="100" cy="120" r="55" fill="#A56B46"/>
-        <circle cx="65" cy="75" r="32" fill="#A56B46"/>
-        <circle cx="135" cy="75" r="32" fill="#A56B46"/>
-        <circle cx="60" cy="70" r="8" fill="#3B2A20"/>
-        <circle cx="140" cy="70" r="8" fill="#3B2A20"/>
-        <ellipse cx="100" cy="105" rx="15" ry="10" fill="#3B2A20"/>
-        <circle cx="100" cy="145" r="12" fill="#FFD5B2"/>
-      </g>
-    </svg>
-    <div class='letter'>Tysm my love Neha 💛🥺<br><br>You made me so happy… I love you so much 💗💗💗</div>
-  `;
+function nextSlide(){
+  if(!musicStarted){
+    document.getElementById("music").play();
+    musicStarted=true;
+  }
+
+  slides[index].classList.remove("active");
+  index++;
+  slides[index].classList.add("active");
+  startTyping(slides[index]);
+
+  if(slides[index].id==="final"){
+    balloons();
+    fireworks();
+  }
 }
 
-let cheerIndex = 0;
-const cheerMessages = [
-  "Nehaaa 😭💛 You’re the cutest girl ever… please don’t be sad…",
-  "Your smile is literally the prettiest thing in the world 💗✨",
-  "I promise to treat you better every single day 😔💛",
-  "I can't see you sad… it hurts me too 🥺",
-  "Please give me one more chance… I adore you too much 😭💗"
-];
-
-function stillSad() {
-  const msg = cheerMessages[cheerIndex];
-  cheerIndex = (cheerIndex + 1) % cheerMessages.length;
-
-  document.getElementById("letter").innerHTML = msg;
+/* ⌨️ Typing animation */
+function startTyping(slide){
+  let elements=slide.querySelectorAll(".type");
+  elements.forEach(el=>{
+    let text=el.innerText;
+    el.innerText="";
+    let i=0;
+    let interval=setInterval(()=>{
+      el.innerText+=text[i];
+      i++;
+      if(i>=text.length) clearInterval(interval);
+    },40);
+  });
 }
+
+/* 🎈 Balloons */
+function balloons(){
+  for(let i=0;i<15;i++){
+    let b=document.createElement("div");
+    b.className="balloon";
+    b.innerHTML="🎈";
+    b.style.left=Math.random()*100+"vw";
+    b.style.animationDuration=(4+Math.random()*4)+"s";
+    document.body.appendChild(b);
+  }
+}
+
+/* 🎆 Fireworks */
+function fireworks(){
+  for(let i=0;i<30;i++){
+    let s=document.createElement("div");
+    s.className="spark";
+    s.style.left=50+Math.random()*200-100+"px";
+    s.style.top=50+Math.random()*200-100+"px";
+    document.getElementById("final").appendChild(s);
+  }
+}
+
+/* Start typing on first slide */
+startTyping(slides[0]);
 </script>
 
 </body>
