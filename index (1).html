@@ -155,16 +155,9 @@ function showSlide(i){
 }
 
 function nextSlide(){
-  const music = document.getElementById("music");
-
-  if(music && music.paused){
-    music.play().catch(()=>{}); // <-- prevents crash on mobile
-  }
-
-  if(index < slides.length - 1){
-    index++;
-    showSlide(index);
-  }
+  document.getElementById("music").play();
+  index++;
+  showSlide(index);
 }
 
 function celebrate(){
