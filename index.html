@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sorry Neha 💛</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Verdana';
+  background: linear-gradient(#ffe6f2, #fff);
+  text-align: center;
+  padding: 20px;
+}
+.teddy {
+  margin-top: 20px;
+  animation: float 3s infinite ease-in-out;
+  width: 180px;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+.letter {
+  font-size: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 12px #ffb6d6;
+  display: inline-block;
+  max-width: 350px;
+  animation: fadeIn 2s;
+  line-height: 1.6;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border: none;
+  background: #ff80aa;
+  color: white;
+  border-radius: 25px;
+  font-size: 18px;
+  margin: 7px;
+}
+.hearts {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: rise 4s linear infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<h1>💛 For Neha, From Daksh 💛</h1>
+
+<div id="content">
+  <svg class="teddy" viewBox="0 0 200 200">
+    <g>
+      <circle cx="100" cy="120" r="55" fill="#A56B46"/>
+      <circle cx="65" cy="75" r="32" fill="#A56B46"/>
+      <circle cx="135" cy="75" r="32" fill="#A56B46"/>
+      <circle cx="60" cy="70" r="8" fill="#3B2A20"/>
+      <circle cx="140" cy="70" r="8" fill="#3B2A20"/>
+      <ellipse cx="100" cy="105" rx="15" ry="10" fill="#3B2A20"/>
+      <circle cx="100" cy="145" r="12" fill="#FFD5B2"/>
+    </g>
+  </svg>
+
+  <div class="letter" id="letter">
+    Neha… 💛<br><br>
+    I'm really, really sorry 😔💗<br>
+    I never meant to hurt you…<br>
+    You matter a lot to me, and your feelings matter even more 💕<br><br>
+    Please forgive me… I will always try to be better for you 😭💛
+  </div>
+
+  <div>
+    <button class="button" onclick="forgive()">Forgive Me 💛</button>
+    <button class="button" onclick="stillSad()">Still Sad 😔</button>
+  </div>
+</div>
+
+<div class="hearts" id="heartContainer"></div>
+
+<script>
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerText = '💗';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (Math.random()*2 + 3) + 's';
+  document.getElementById('heartContainer').appendChild(heart);
+  setTimeout(() => heart.remove(), 4000);
+}
+setInterval(createHeart, 600);
+
+function forgive() {
+  document.getElementById("content").innerHTML = `
+    <svg class="teddy" viewBox="0 0 200 200">
+      <g>
+        <circle cx="100" cy="120" r="55" fill="#A56B46"/>
+        <circle cx="65" cy="75" r="32" fill="#A56B46"/>
+        <circle cx="135" cy="75" r="32" fill="#A56B46"/>
+        <circle cx="60" cy="70" r="8" fill="#3B2A20"/>
+        <circle cx="140" cy="70" r="8" fill="#3B2A20"/>
+        <ellipse cx="100" cy="105" rx="15" ry="10" fill="#3B2A20"/>
+        <circle cx="100" cy="145" r="12" fill="#FFD5B2"/>
+      </g>
+    </svg>
+    <div class='letter'>Tysm my love Neha 💛🥺<br><br>You made me so happy… I love you so much 💗💗💗</div>
+  `;
+}
+
+let cheerIndex = 0;
+const cheerMessages = [
+  "Nehaaa 😭💛 You’re the cutest girl ever… please don’t be sad…",
+  "Your smile is literally the prettiest thing in the world 💗✨",
+  "I promise to treat you better every single day 😔💛",
+  "I can't see you sad… it hurts me too 🥺",
+  "Please give me one more chance… I adore you too much 😭💗"
+];
+
+function stillSad() {
+  const msg = cheerMessages[cheerIndex];
+  cheerIndex = (cheerIndex + 1) % cheerMessages.length;
+
+  document.getElementById("letter").innerHTML = msg;
+}
+</script>
+
+</body>
+</html>
